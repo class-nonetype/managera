@@ -1,0 +1,12 @@
+<div class="authentication-page">
+  <aside class="authentication-page__hero"></aside>
+  <section class="authentication-page__form">
+    <div class="authentication-page__form-content">
+      @if (mode() === 'sign-in') {
+        <sign-in-form (signUpRequested)="mode.set('sign-up')" />
+      } @else {
+        <app-sign-up-form (signInRequested)="mode.set('sign-in')" (signedUp)="mode.set('sign-in')" />
+      }
+    </div>
+  </section>
+</div>

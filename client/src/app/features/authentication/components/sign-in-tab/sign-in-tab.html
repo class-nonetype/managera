@@ -1,0 +1,30 @@
+<section hlmCard class="h-full">
+  <div hlmCardHeader>
+    <h3 hlmCardTitle>Bienvenido de vuelta</h3>
+    <p hlmCardDescription>Ingresa tu usuario y contraseña para continuar.</p>
+  </div>
+
+  <div hlmCardContent>
+    <form id="sign-in-form">
+      <div hlmFieldGroup>
+        <div hlmField>
+          <label hlmFieldLabel for="sign-in-username">Usuario</label>
+          <input hlmInput id="sign-in-username" type="text" autocomplete="username" />
+        </div>
+        <div hlmField>
+          <label hlmFieldLabel for="sign-in-password">Contraseña</label>
+          <input hlmInput id="sign-in-password" type="password" autocomplete="current-password" />
+        </div>
+
+        <button hlmBtn type="submit" class="w-full">Iniciar sesión</button>
+
+        <hlm-field-separator>o continúa con</hlm-field-separator>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button hlmBtn variant="outline" type="button">Google</button>
+          <button hlmBtn variant="outline" type="button">GitHub</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+/* Las dos pestañas ocupan la misma celda: el contenedor mide lo que la más alta */
+.tabs__panels {
+  display: grid;
+}
+
+.tabs__panel {
+  grid-area: 1 / 1;
+}
+
+.tabs__panel > * {
+  display: block;
+  height: 100%;
+}
+
+/*
+  La pestaña inactiva sigue ocupando espacio, solo que invisible.
+  El preflight de Tailwind fuerza [hidden] { display: none !important } dentro de @layer base.
+  Con !important gana el layer declarado ANTES, por eso esta regla va en @layer theme.
+
+  opacity: 0 oculta todo al instante. Solo con visibility, los hijos con transition-all
+  (los botones de Spartan) animan la visibility heredada y siguen visibles ~150ms.
+*/
+@layer theme {
+  .tabs__panel[hidden] {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,75 @@
+# ========================
+# OS / editores
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.history/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+
+# ========================
+# Variables de entorno / secretos
+# ========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ========================
+# Logs
+# ========================
+*.log
+logs/
+
+# ========================
+# Client (Angular / Node)
+# ========================
+node_modules/
+client/dist/
+client/out-tsc/
+client/tmp/
+client/coverage/
+client/.angular/
+client/.nx/
+client/.sass-cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+testem.log
+__screenshots__/
+
+# ========================
+# Server (Go)
+# ========================
+server/bin/
+server/tmp/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.html
+go.work
+go.work.sum
+
+# ========================
+# Claude Code
+# ========================
+.claude/
+**/.claude/
+CLAUDE.local.md
+**/CLAUDE.local.md
+.mcp.json

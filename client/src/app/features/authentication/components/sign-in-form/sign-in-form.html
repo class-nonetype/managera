@@ -1,0 +1,77 @@
+<form [formRoot]="signInForm" class="flex flex-col gap-6">
+  <div hlmFieldGroup>
+    <div class="flex flex-col items-center gap-1 text-center">
+      <h1 class="text-3xl font-thin">Inicia sesión en tu cuenta</h1>
+      <p class="text-muted-foreground text-sm text-balance">
+        Ingresa tus credenciales para acceder a tu cuenta
+      </p>
+    </div>
+
+    <div hlmField>
+      <label hlmFieldLabel for="sign-in-email">Correo</label>
+      <input
+        hlmInput
+        id="sign-in-email"
+        type="email"
+        placeholder="m@ejemplo.com"
+        autocomplete="email"
+        [formField]="signInForm.email"
+      />
+      @if (signInForm.email().touched()) {
+        @for (error of signInForm.email().errors(); track error.kind) {
+          <hlm-field-error forceShow>{{ error.message }}</hlm-field-error>
+        }
+      }
+    </div>
+
+    <div hlmField>
+      <div class="flex items-center">
+        <label hlmFieldLabel for="sign-in-password">Contraseña</label>
+        <a href="#" class="ml-auto text-sm underline-offset-4 hover:underline">
+          ¿Olvidaste tu contraseña?
+        </a>
+      </div>
+      <input
+        hlmInput
+        id="sign-in-password"
+        type="password"
+        autocomplete="current-password"
+        [formField]="signInForm.password"
+      />
+      @if (signInForm.password().touched()) {
+        @for (error of signInForm.password().errors(); track error.kind) {
+          <hlm-field-error forceShow>{{ error.message }}</hlm-field-error>
+        }
+      }
+    </div>
+
+    @for (error of signInForm().errors(); track error.kind) {
+      <hlm-field-error>{{ error.message }}</hlm-field-error>
+    }
+
+    <div hlmField>
+
+      @if ( signInForm().submitting() ) {
+        <progress-bar/>
+      } @else {
+        <button hlmBtn type="submit" [disabled]="signInForm().submitting()">
+          Iniciar sesión
+        </button>
+      }
+    </div>
+
+    <hlm-field-separator>o continúa con</hlm-field-separator>
+
+    <div hlmField>
+      <button hlmBtn variant="outline" type="button">
+        Continuar con Google
+      </button>
+      <p hlmFieldDescription class="text-center">
+        ¿No tienes cuenta?
+        <button type="button" class="underline underline-offset-4" (click)="signUpRequested.emit()">
+          Regístrate
+        </button>
+      </p>
+    </div>
+  </div>
+</form>

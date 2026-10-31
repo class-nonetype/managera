@@ -1,0 +1,77 @@
+<form [formRoot]="signUpForm" class="flex flex-col gap-6">
+  <div hlmFieldGroup>
+    <div class="flex flex-col items-center gap-1 text-center">
+      <h1 class="text-3xl font-thin">Crea tu cuenta</h1>
+      <p class="text-muted-foreground text-sm text-balance">
+        Completa tus datos para empezar a gestionar tus proyectos
+      </p>
+    </div>
+
+    <div hlmField>
+      <label hlmFieldLabel for="sign-up-name">Nombre</label>
+      <input
+        hlmInput
+        id="sign-up-name"
+        type="text"
+        autocomplete="name"
+        [formField]="signUpForm.name"
+      />
+      @if (signUpForm.name().touched()) {
+        @for (error of signUpForm.name().errors(); track error.kind) {
+          <hlm-field-error forceShow>{{ error.message }}</hlm-field-error>
+        }
+      }
+    </div>
+
+    <div hlmField>
+      <label hlmFieldLabel for="sign-up-email">Correo</label>
+      <input
+        hlmInput
+        id="sign-up-email"
+        type="email"
+        placeholder="m@ejemplo.com"
+        autocomplete="email"
+        [formField]="signUpForm.email"
+      />
+      @if (signUpForm.email().touched()) {
+        @for (error of signUpForm.email().errors(); track error.kind) {
+          <hlm-field-error forceShow>{{ error.message }}</hlm-field-error>
+        }
+      }
+    </div>
+
+    <div hlmField>
+      <label hlmFieldLabel for="sign-up-password">Contraseña</label>
+      <input
+        hlmInput
+        id="sign-up-password"
+        type="password"
+        autocomplete="new-password"
+        [formField]="signUpForm.password"
+      />
+      @if (signUpForm.password().touched()) {
+        @for (error of signUpForm.password().errors(); track error.kind) {
+          <hlm-field-error forceShow>{{ error.message }}</hlm-field-error>
+        }
+      } @else {
+        <p hlmFieldDescription>Mínimo 8 caracteres.</p>
+      }
+    </div>
+
+    @for (error of signUpForm().errors(); track error.kind) {
+      <hlm-field-error>{{ error.message }}</hlm-field-error>
+    }
+
+    <div hlmField>
+      <button hlmBtn type="submit" [disabled]="signUpForm().submitting()">
+        {{ signUpForm().submitting() ? 'Creando cuenta…' : 'Crear cuenta' }}
+      </button>
+      <p hlmFieldDescription class="text-center">
+        ¿Ya tienes cuenta?
+        <button type="button" class="underline underline-offset-4" (click)="signInRequested.emit()">
+          Inicia sesión
+        </button>
+      </p>
+    </div>
+  </div>
+</form>
